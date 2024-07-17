@@ -42,10 +42,10 @@ const ContactSection = () => {
             <ToastContainer />
             <section className='grid lg:grid-cols-2 my-12 md:my-12 py-2 px-10 gap-6' id='contact'>
                 <div className='flex flex-col place-self-center items-start justify-center'>
-                    <h2 className='text-4xl font-bold text-white my-2'>Let's Connect</h2>
+                    <h2 className='text-4xl font-bold text-white my-2'>Let&apos;s Connect</h2>
                     <p className='text-[#e5e5e5] mb-4 mt-4 max-w-md'>
                         {" "}
-                        My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                        My inbox is always open. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
                     </p>
                     <div className='flex flex-row mt-4 gap-4'>
                         <Link href="https://github.com/mohamedzait20003">

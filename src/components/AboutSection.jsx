@@ -75,7 +75,7 @@ const AboutSection = () => {
                         <h2 className='text-4xl font-bold text-white mb-4'>About Me</h2>
                         <h3 className='text-lg text-[#a056e6]'>Engineer & Developper</h3>
                         <p className='text-base lg:text-lg mt-10'>
-                            I am a fullstack developer with 3 years of expertise crafting immersive digital experiences, Proficient in PHP Laravel, Python Django, and React JS. I bring creativity and precision to every project. Let's turn your ideas into captivating web realities!
+                            I am a fullstack developer with 3 years of expertise crafting immersive digital experiences, Proficient in PHP Laravel, Python Django, and React JS. I bring creativity and precision to every project. Let&apos;s turn your ideas into captivating web realities!
                         </p>
                         <div className='flex flex-row mt-10 items-center justify-center lg:items-start lg:justify-start gap-10 ml-10 lg:ml-0'>
                             <TabButton selectTab={() => handleTabChange("skills")} active={tab === "skills"}> Skills </TabButton>
