@@ -48,6 +48,40 @@ const FilterTags = [
     'Mobile'
 ]
 
+const getBorderClasses = (projectsDataLength, index) => {
+    let borderClasses = 'border-8 border-white ';
+
+    if (projectsDataLength === 1) {
+        borderClasses += 'lg:border-t-8 lg:border-b-8 lg:border-l-8 lg:border-r-8';
+    } else if (projectsDataLength === 2) {
+        if (index === 0) {
+            borderClasses += 'lg:border-t-8 lg:border-l-8 lg:border-b-8 lg:border-r-0';
+        } else {
+            borderClasses += 'lg:border-t-8 lg:border-r-8 lg:border-b-8 lg:border-l-0';
+        }
+    } else {
+        if (index === 0) {
+            borderClasses += 'lg:border-t-8 lg:border-l-8 lg:border-b-0 lg:border-r-0';
+        } else if (index === 1) {
+            borderClasses += 'lg:border-t-8 lg:border-r-8 lg:border-b-0 lg:border-l-0';
+        } else if (index % 2 === 0) {
+            if (index === projectsDataLength - 1 || index === projectsDataLength - 2) {
+                borderClasses += 'lg:border-b-8 lg:border-l-8 lg:border-r-0 lg:border-t-0';
+            } else {
+                borderClasses += 'lg:border-l-8 lg:border-t-0 lg:border-b-0 lg:border-r-0';
+            }
+        } else {
+            if (index === projectsDataLength - 1) {
+                borderClasses += 'lg:border-b-8 lg:border-r-8 lg:border-l-0 lg:border-t-0';
+            } else {
+                borderClasses += 'lg:border-r-8 lg:border-t-0 lg:border-b-0 lg:border-l-0';
+            }
+        }
+    }
+
+    return borderClasses;
+};
+
 const ProjectsSection = () => {
     const [selectedTag, setSelectedTag] = useState('All');
     const ref = useRef(null);
@@ -77,35 +111,7 @@ const ProjectsSection = () => {
                 {filteredprojects.length > 0 ? (
                     <div ref={ref} className='grid lg:grid-cols-2 gap-8 md:gap-12 mt-10'>
                         {filteredprojects.map((project, index) => {
-                            let borderClasses = 'border-8 border-white ';
-
-                            if (projectsData.length === 1) {
-                                borderClasses += 'lg:border-t-8 lg:border-b-8 lg:border-l-8 lg:border-r-8';
-                            } else if (projectsData.length === 2) {
-                                if (index === 0) {
-                                    borderClasses += 'lg:border-t-8 lg:border-l-8 lg:border-b-8 lg:border-r-0'; 
-                                } else {
-                                    borderClasses += 'lg:border-t-8 lg:border-r-8 lg:border-b-8 lg:border-l-0'; 
-                                }
-                            } else {
-                                if (index === 0) {
-                                    borderClasses += 'lg:border-t-8 lg:border-l-8 lg:border-b-0 lg:border-r-0'; 
-                                } else if (index === 1) {
-                                    borderClasses += 'lg:border-t-8 lg:border-r-8 lg:border-b-0 lg:border-l-0'; 
-                                } else if (index % 2 === 0) {
-                                    if (index === projectsData.length - 1 || index === projectsData.length - 2) {
-                                        borderClasses += 'lg:border-b-8 lg:border-l-8 lg:border-r-0 lg:border-t-0'; 
-                                    } else {
-                                        borderClasses += 'lg:border-l-8 lg:border-t-0 lg:border-b-0 lg:border-r-0'; 
-                                    }
-                                } else {
-                                    if (index === projectsData.length - 1) {
-                                        borderClasses += 'lg:border-b-8 lg:border-r-8 lg:border-l-0 lg:border-t-0'; 
-                                    } else {
-                                        borderClasses += 'lg:border-r-8 lg:border-t-0 lg:border-b-0 lg:border-l-0'; 
-                                    }
-                                }
-                            }
+                            const borderClasses = getBorderClasses(filteredprojects.length, index);
 
                             return (
                                 <motion.li key={index} variants={cardVariants} initial="initial" animate={isInView ? "animate" : "initial"} transition={{ duration: 0.3, delay: index*0.4 }}>
