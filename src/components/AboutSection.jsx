@@ -67,14 +67,14 @@ const AboutSection = () => {
     };
 
     return (
-        <section className='h-full text-white bg-[#191919] mt-32' id='about'>
+        <section className='h-full text-white bg-[#191919]' id='about'>
             <div className='lg:grid lg:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16'>
                 <Image src="/About.jpeg" className='min-w-full' width={500} height={500} />
                 <div className='h-full flex flex-col text-center text-balance lg:text-left lg:text-wrap'>
                     <div className='flex flex-col mt-10 lg:mt-4'>
                         <h2 className='text-4xl font-bold text-white mb-4'>About Me</h2>
                         <h3 className='text-lg text-[#a056e6]'>Engineer & Developper</h3>
-                        <p className='text-base text-justify lg:text-lg mt-10'>
+                        <p className='text-base lg:text-lg mt-10'>
                             I am a fullstack developer with 3 years of expertise crafting immersive digital experiences, Proficient in PHP Laravel, Python Django, and React JS. I bring creativity and precision to every project. Let's turn your ideas into captivating web realities!
                         </p>
                         <div className='flex flex-row mt-10 items-center justify-center lg:items-start lg:justify-start gap-10 ml-10 lg:ml-0'>

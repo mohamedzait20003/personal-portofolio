@@ -1,6 +1,7 @@
 // Libraries
 "use client";
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import { animate, motion, useInView } from 'framer-motion'
 
 // Components
 import ProjectCard from './ProjectCard'
@@ -20,7 +21,7 @@ const projectsData = [
             'TailwindCSS',
             'Git'
         ],
-        GithubUrl: '',
+        GithubUrl: 'https://github.com/mohamedzait20003/personal-portofolio',
         DeployUrl: '',
     },
     {
@@ -35,7 +36,7 @@ const projectsData = [
             'WebSockets',
             'Git'
         ],
-        GithubUrl: '',
+        GithubUrl: 'https://github.com/mohamedzait20003/realtime-code-collobaration',
         DeployUrl: '',
     },
 ]
@@ -49,12 +50,20 @@ const FilterTags = [
 
 const ProjectsSection = () => {
     const [selectedTag, setSelectedTag] = useState('All');
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     const handleTagChange = (newTag) => {
         setSelectedTag(newTag);
     };
     const filteredprojects = projectsData.filter((project) => {
         return selectedTag === 'All' || project.Tag === selectedTag;
     });
+
+    const cardVariants = {
+        initial: { y: 50, opacity: 0 },
+        animate: { y: 0, opacity: 1 },
+      };
 
     return (
         <section className='w-full flex flex-col mt-5' id='projects'>
@@ -66,7 +75,7 @@ const ProjectsSection = () => {
             </div>
             <div className='w-full flex items-center justify-center mt-10 mb-10'>
                 {filteredprojects.length > 0 ? (
-                    <div className='grid lg:grid-cols-2 gap-8 md:gap-12 mt-10'>
+                    <div ref={ref} className='grid lg:grid-cols-2 gap-8 md:gap-12 mt-10'>
                         {filteredprojects.map((project, index) => {
                             let borderClasses = 'border-8 border-white ';
 
@@ -99,15 +108,18 @@ const ProjectsSection = () => {
                             }
 
                             return (
-                                <ProjectCard 
-                                    key={project.id} 
-                                    title={project.title} 
-                                    icons={project.icons} 
-                                    imgUrl={project.image} 
-                                    borderClasses={borderClasses} 
-                                    gitUrl={project.GithubUrl} 
-                                    ViewUrl={project.DeployUrl} 
-                                />
+                                <motion.li variants={cardVariants} initial="initial" animate={isInView ? "animate" : "initial"} transition={{ duration: 0.3, delay: index*0.4 }}>
+                                    <ProjectCard 
+                                        key={project.id} 
+                                        title={project.title} 
+                                        icons={project.icons} 
+                                        imgUrl={project.image} 
+                                        borderClasses={borderClasses}
+                                        Tag={project.Tag} 
+                                        gitUrl={project.GithubUrl} 
+                                        ViewUrl={project.DeployUrl} 
+                                    />
+                                </motion.li>
                             );
                         })}
                     </div>

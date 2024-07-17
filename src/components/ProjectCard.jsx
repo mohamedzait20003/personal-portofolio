@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 //Icons 
 import { CodeBracketIcon, EyeIcon } from '@heroicons/react/16/solid';
-import { FaJs, FaReact, FaPhp, FaPython, FaLaravel, FaGitAlt, FaJava } from 'react-icons/fa';
+import { FaJs, FaReact, FaPhp, FaPython, FaLaravel, FaGitAlt, FaJava, FaGlobe, FaDesktop, FaMobileAlt, FaList } from 'react-icons/fa';
 import { SiTailwindcss, SiNextdotjs, SiDjango, SiMysql, SiCsharp, SiCplusplus, SiWebrtc } from 'react-icons/si';
 
 const iconComponents = {
@@ -26,8 +26,15 @@ const iconComponents = {
     WebSockets: <SiWebrtc />
 };
 
+const FilterTags = {
+    'All': <FaList />,
+    'Web': <FaGlobe />,
+    'Desktop': <FaDesktop />,
+    'Mobile': <FaMobileAlt />
+};
 
-const ProjectCard = ({ imgUrl, title, icons, borderClasses, gitUrl, ViewUrl }) => {
+
+const ProjectCard = ({ imgUrl, title, icons, borderClasses, Tag, gitUrl, ViewUrl }) => {
     return (
         <div className={`w-full h-full bg-[#2f2f2f] px-10 py-5 rounded-md ${borderClasses}`}>
             <div className='mb-5 rounded-t-xl relative group'>
@@ -49,12 +56,17 @@ const ProjectCard = ({ imgUrl, title, icons, borderClasses, gitUrl, ViewUrl }) =
                 </div>
             </div>
             <h3 className='text-white text-lg text-center mb-5'>{title}</h3>
-            <div className='flex flex-row items-start space-x-4 pt-4 border-t-2 border-t-white'>
-                {icons.map((icon, index) => (
-                    <div key={index} className='text-white text-4xl'>
-                        {iconComponents[icon]}
-                    </div>
-                ))}
+            <div className='flex flex-row items-center justify-between pt-4 border-t-2 border-t-white'>
+                <div className='flex flex-row gap-6 items-center justify-start'>
+                    {icons.map((icon, index) => (
+                        <div key={index} className='text-white text-4xl'>
+                            {iconComponents[icon]}
+                        </div>
+                    ))}
+                </div>
+                <div className='flex items-center'>
+                    <p className='text-white text-4xl'>{FilterTags[Tag]}</p>
+                </div>
             </div>
         </div>
     )
