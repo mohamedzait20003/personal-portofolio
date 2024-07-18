@@ -51,7 +51,7 @@ const ContactSection = () => {
                         <Link href="https://github.com/mohamedzait20003">
                             <FaGithub className='text-2xl text-white cursor-pointer hover:text-purple-600' />
                         </Link>
-                        <Link href="www.linkedin.com/in/mohamed-zaitoun-a4a2391b7">
+                        <Link href="https://www.linkedin.com/in/mohamed-zaitoun-a4a2391b7">
                             <FaLinkedin className='text-2xl text-white cursor-pointer hover:text-cyan-300' />
                         </Link>
                     </div>
