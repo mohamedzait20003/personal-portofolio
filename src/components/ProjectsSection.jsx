@@ -49,7 +49,7 @@ const FilterTags = [
 ]
 
 const getBorderClasses = (projectsDataLength, index) => {
-    let borderClasses = 'border-8 border-white ';
+    let borderClasses = 'border-2 sm:border-8 border-white ';
 
     if (projectsDataLength === 1) {
         borderClasses += 'lg:border-t-8 lg:border-b-8 lg:border-l-8 lg:border-r-8';
